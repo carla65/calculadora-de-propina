@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+    <title>propina </title>
+    <link rel="stylesheet" href="propina.css">
+</head>
+<body>
+    <h1>Calculadora de propina</h1>
+    <input type="number" id="cuenta" placeholder="Cuenta"/>
+    <input type="number" id="comensal" placeholder="Comensales"/>
+    <input type="number" id="propina" placeholder="Porcentaje de propina"/>
+
+    <button onclick="calcularPropina()">Calcular propina</button><br/>
+    <label id="pagar"></label>
+
+    <script>
+        function calcularPropina() {
+            var cuenta = parseFloat(document.getElementById("cuenta").value);
+            var comensal = parseInt(document.getElementById("comensal").value);
+            var porcentaje = parseFloat(document.getElementById("propina").value);
+
+            // Calculando el monto de la propina
+            var propina = (cuenta * porcentaje) / 100;
+
+            // Calculando el total a pagar
+            var totalPagar = cuenta + propina;
+
+            // Calculando cuánto debe pagar cada comensal
+            var aPagar = totalPagar / comensal;
+
+            // Resultado
+            document.getElementById("pagar").innerHTML = "Cada comensal debe pagar: $" + aPagar;
+        }
+    </script>
+</body>
+</html>
